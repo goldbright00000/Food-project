@@ -48,7 +48,8 @@
                             <th>Created Date</th>                            
                             <th class="text-center"><i class="
                                 icon-circle-down2"></i></th>
-                        </tr>
+                            <th>Del</th>    
+                        </tr> 
                     </thead>
                     <tbody></tbody>
                 </table>
@@ -211,6 +212,8 @@
                 {data: 'wallet', sortable: false, searchable: false,},
                 {data: 'created_at'},
                 {data: 'action', sortable: false, searchable: false},
+                {data: 'delete'},
+       
             ],
             colReorder: true,
             drawCallback: function( settings ) {
@@ -247,6 +250,46 @@
                 window.location.reload();
             }
          });
+        
+         $(document).on('click', '.btn-delete', function(event){
+            event.preventDefault();
+            var r = confirm("Do you really want to delete this user?");
+            if(r == true){
+                    console.log("Delete Clicked");
+                    let id = $(this).attr("data-id")
+                    let url = "{{ url('/admin/user/delete/') }}/"+id;
+                    let userUrl ="{{ url('/admin/users/') }}";
+                    let self = $(this);
+                    $.ajax({
+                        url: url,
+                        type: 'GET',
+                        dataType: 'JSON',
+                    })
+                    .done(function(data) {
+                        console.log(data);
+                        console.log(self);
+                        window.location.href= userUrl;
+                        $.jGrowl("", {
+                            position: 'bottom-center',
+                            header: 'User Delete Successful ✅',
+                            theme: 'bg-success',
+                            life: '2000'
+                        }); 
+                    })
+                    .fail(function(data) {
+                        console.log(data);
+                        $.jGrowl("", {
+                            position: 'bottom-center',
+                            header: 'Something went wrong, please try again.',
+                            theme: 'bg-danger',
+                            life: '1800'
+                        }); 
+                    })
+                }   
+            
+         
+         });
+         
     });
 
 </script>

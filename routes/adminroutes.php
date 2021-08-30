@@ -32,6 +32,7 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('/users', 'AdminController@users')->name('admin.users');
         Route::get('/usersDatatable', 'Datatables\UsersDatatable@usersDatatable')->name('admin.usersDatatable');
         Route::get('/user/edit/{id}', 'AdminController@getEditUser')->name('admin.get.editUser');
+        Route::get('/user/delete/{id}', 'AdminController@deleteUser')->name('admin.deleteUser');
     });
 
     Route::group(['middleware' => 'permission:all_users_edit'], function () {

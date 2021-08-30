@@ -340,6 +340,22 @@ class AdminController extends Controller
         return redirect()->back()->with(['success' => 'Operation Successful']);
     }
 
+    /**
+    * @param $id
+    */
+   public function deleteUser($id)
+   {
+       $user = User::find($id);
+
+       if ($user) {
+           $user->delete();
+           return response()->json(['success' => true]);
+       } else {
+           return redirect()->route('admin.user');
+       }
+   }
+
+
     public function manageDeliveryGuys()
     {
         return view('admin.manageDeliveryGuys');
@@ -1323,7 +1339,7 @@ class AdminController extends Controller
         // dd($request->all());
 
         $item = new Item();
-
+           
         $item->name = $request->name;
         $item->price = $request->price;
         $item->old_price = $request->old_price == null ? 0 : $request->old_price;
@@ -1331,6 +1347,7 @@ class AdminController extends Controller
         $item->item_category_id = $request->item_category_id;
 
         if ($request->hasFile('image')) {
+           
             $image = $request->file('image');
             $rand_name = time() . str_random(10);
             $filename = $rand_name . '.jpg';
@@ -1338,6 +1355,7 @@ class AdminController extends Controller
                 ->resize(486, 355)
                 ->save(base_path('assets/img/items/' . $filename), config('appSettings.uploadImageQuality '), 'jpg');
             $item->image = '/assets/img/items/' . $filename;
+           
         }
 
         if ($request->is_recommended == 'true') {

@@ -25,7 +25,10 @@ class UsersDatatable
             ->addColumn('action', function ($user) {
                 return '<a href="' . route('admin.get.editUser', $user->id) . '" class="btn btn-sm btn-primary"> View</a>';
             })
-            ->rawColumns(['role', 'action', 'created_at'])
+            ->addColumn('delete', function ($user) {
+                return '<button id = "user-delete-btn" class="btn-delete btn btn-sm btn-primary " data-id="'.$user->id.'" >Del</button>';
+            })
+            ->rawColumns(['role', 'action', 'created_at','delete'])
             ->make(true);
     }
 }

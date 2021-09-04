@@ -84,7 +84,17 @@ class OrdersDatatable
                 }
                 return $html;
             })
-            ->rawColumns(['unique_order_id', 'orderstatus_id', 'action', 'created_at', 'live_timer'])
+            ->addColumn('paid_status', function ($order) {
+                $html = '';
+                if ($order->orderstatus_id == 5){
+                    $html .='<div style="width:40px;height:15px;background-color:green;"></div>';
+                }else{
+                    $html .='<div style="width:40px;height:15px;background-color:red;"></div>';
+                }
+
+                return $html;
+            })
+            ->rawColumns(['paid_status','unique_order_id', 'orderstatus_id', 'action', 'created_at', 'live_timer'])
             ->make(true);
     }
 }

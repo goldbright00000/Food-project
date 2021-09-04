@@ -100,12 +100,12 @@ Dashboard
                         </div>
                         <div class="d-flex justify-content-start">
                             <div>
-                                <img src="{{substr(url("/"), 0, strrpos(url("/"), '/'))}}{{ $order->restaurant->image }}"
-                                alt="{{ $order->restaurant->name }}" height="70" width="70"
+                                <img src="{{substr(url("/"), 0, strrpos(url("/"), '/'))}}"
+                                alt="" height="70" width="70"
                                 style="border-radius: 8px;">
                             </div>
                             <div class="ml-2">
-                                <span><b>{{ $order->restaurant->name }}</b></span>
+                                <span><b></b></span>
                                 <br>
                                 <span>#{{ substr ($order->unique_order_id, -9)  }}</span>
                                 <br>

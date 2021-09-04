@@ -28,3 +28,4 @@
 [18-Jul-2021 23:58:29 America/Port_of_Spain] PHP Fatal error:  Cannot redeclare App\Restaurant::ratings() in /home/komida/public_html/order/app/Restaurant.php on line 180
 [18-Jul-2021 23:58:40 America/Port_of_Spain] PHP Fatal error:  Cannot redeclare App\Restaurant::ratings() in /home/komida/public_html/order/app/Restaurant.php on line 180
 [19-Jul-2021 00:00:38 America/Port_of_Spain] PHP Fatal error:  Cannot redeclare App\Restaurant::ratings() in /home/komida/public_html/order/app/Restaurant.php on line 180
+[30-Aug-2021 17:04:09 America/Ojinaga] PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted (tried to allocate 16384 bytes) in /home/komida/public_html/order/vendor/intervention/image/src/Intervention/Image/Gd/Decoder.php on line 138

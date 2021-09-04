@@ -59,6 +59,7 @@
                         <thead>
                             <tr>
                                 <th class="hidden">ID</th>
+                                <th>Paid Status</th>
                                 <th>Order ID</th>
                                 <th>Status</th>
                                 <th>Store Name</th>
@@ -69,7 +70,7 @@
                                 <th class="text-center" style="width: 10%;"><i class="
                                     icon-circle-down2"></i></th>
                             </tr>
-                        </thead>
+                        </thead> 
                         <tbody>
                         </tbody>
                     </table>
@@ -87,11 +88,12 @@
             processing: true,
             serverSide: true,
             stateSave: true,
-            lengthMenu: [ 10, 25, 50, 100, 200, 500 ],
+            lengthMenu: [ 15,10, 25, 50, 100, 200, 500 ],
             order: [[ 0, "desc" ]],
             ajax: '{{ route('admin.ordersDataTable') }}',
             columns: [
                 {data: 'id', visible: false, searchable: false},
+                 {data: 'paid_status'},
                 {data: 'unique_order_id'},
                 {data: 'orderstatus_id', name: "orderstatus.name"},
                 {data: 'restaurant_name', name: "restaurant.name"},
